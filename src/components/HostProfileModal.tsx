@@ -39,19 +39,19 @@ export const HostProfileModal: React.FC<HostProfileModalProps> = ({
       aria-modal="true"
       aria-labelledby="modal-host-title"
     >
-      <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
         {/* Top Header Banner */}
         <div className="bg-[#0B192C] text-white p-6 sm:p-8 relative">
           <button
             type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="absolute top-5 right-5 p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+            className="absolute top-5 right-5 z-10 p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pr-12 sm:pr-14">
             <div className="flex items-center gap-4">
               <div className={`w-14 h-14 rounded-xl ${host.logoBg} flex items-center justify-center text-white font-black text-xl shadow-md border border-white/10 shrink-0`}>
                 {host.logoText}
@@ -94,7 +94,7 @@ export const HostProfileModal: React.FC<HostProfileModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-8 max-h-[75vh] overflow-y-auto">
+        <div className="p-6 sm:p-8 space-y-8 overflow-y-auto flex-1">
           {/* Quick Verdict */}
           <div>
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
