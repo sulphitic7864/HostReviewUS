@@ -1,0 +1,6 @@
+{
+  "name": "Creative Studio Workspace",
+  "description": "Interactive modern studio workspace and prototype engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
