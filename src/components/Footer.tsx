@@ -12,51 +12,78 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const trustFeatures = [
+    {
+      icon: Server,
+      color: 'emerald',
+      title: '130+ Hosts Benchmarked',
+      text: 'We maintain active live accounts to track server response times, uptime spikes, and renewal pricing daily.'
+    },
+    {
+      icon: ShieldCheck,
+      color: 'blue',
+      title: '100% Editorial Independence',
+      text: 'Rankings are determined by our 5-pillar scoring methodology. Hosts cannot buy higher star ratings.'
+    },
+    {
+      icon: Award,
+      color: 'amber',
+      title: 'US Small Business Focus',
+      text: 'Testing nodes deployed in Ashburn, Chicago, Dallas, and San Jose to evaluate genuine domestic performance.'
+    }
+  ];
+
+  const colorClasses = {
+    emerald: {
+      badge: 'bg-emerald-500/10 text-emerald-600 ring-emerald-200/80',
+      glow: 'shadow-emerald-500/10'
+    },
+    blue: {
+      badge: 'bg-blue-500/10 text-blue-600 ring-blue-200/80',
+      glow: 'shadow-blue-500/10'
+    },
+    amber: {
+      badge: 'bg-amber-500/10 text-amber-600 ring-amber-200/80',
+      glow: 'shadow-amber-500/10'
+    }
+  } as const;
+
   return (
     <footer className="bg-[#0B192C] text-slate-400 border-t border-slate-800 text-sm">
-      {/* Top Value Strip */}
-      <div className="border-b border-slate-800/80 bg-slate-900/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 shrink-0">
-              <Server className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-semibold">130+ Hosts Benchmarked</h4>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                We maintain active live accounts to track server response times, uptime spikes, and renewal pricing daily.
-              </p>
-            </div>
+      <div className="bg-gradient-to-br from-slate-100 via-white to-emerald-50/80 border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <div className="mx-auto mb-8 max-w-2xl text-center">
+            <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
+              Why HostReviewUS
+            </span>
+            <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              Built for clarity, not hype.
+            </h3>
           </div>
 
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-semibold">100% Editorial Independence</h4>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                Rankings are determined by our 5-pillar scoring methodology. Hosts cannot buy higher star ratings.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-400 shrink-0">
-              <Award className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-semibold">US Small Business Focus</h4>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                Testing nodes deployed in Ashburn, Chicago, Dallas, and San Jose to evaluate genuine domestic performance.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {trustFeatures.map(({ icon: Icon, color, title, text }) => (
+              <div
+                key={title}
+                className={`group rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-lg shadow-slate-200/60 ring-1 ring-white/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${colorClasses[color].glow}`}
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ring-1 ${colorClasses[color].badge}`}>
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-base font-semibold text-slate-900">{title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand Info */}
           <div className="col-span-2">
@@ -177,28 +204,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         {/* Affiliate Disclosure Notice Box */}
-        <div className="mt-10 pt-6 border-t border-slate-800 text-xs text-slate-500 leading-relaxed">
-          <p className="mb-2">
-            <strong className="text-slate-400">FTC Affiliate Disclosure:</strong> HostReview US is an independent review and benchmark publication supported by reader referral commissions. When you click our affiliate links and purchase hosting plans, we may receive compensation from provider partners at no additional cost to you. We purchase and test hosting plans anonymously with our own funds. Compensation does not influence our test metrics, star ratings, or editorial conclusions.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-slate-800/60 text-slate-500 text-xs">
-            <div>
+        <div className="mt-10 pt-5 text-center border-t border-slate-800 text-xs text-slate-500 leading-relaxed">
               © 2026 HostReview US. All rights reserved. Registered trademark of Infrastructure Media Lab LLC.
-            </div>
-            <div className="flex items-center gap-4 text-slate-400">
-              <button type="button" onClick={() => handleNav('methodology')} className="hover:text-white">
-                5-Pillar Score
-              </button>
-              <span>·</span>
-              <button type="button" onClick={() => handleNav('disclosure')} className="hover:text-white">
-                FTC Disclosure
-              </button>
-              <span>·</span>
-              <button type="button" onClick={() => handleNav('privacy')} className="hover:text-white">
-                Privacy
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </footer>
