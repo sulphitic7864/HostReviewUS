@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageRoute, Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { TrustSection } from './components/TrustSection';
 import { HostProfileModal } from './components/HostProfileModal';
 import { HomePage } from './pages/HomePage';
 import { HostsPage } from './pages/HostsPage';
@@ -139,6 +140,8 @@ export default function App() {
           currentPage === 'about') && (
           <TrustPages type={currentPage} onNavigate={handleNavigate} />
         )}
+
+        {currentPage === 'home' && <TrustSection />}
       </main>
 
       {/* Floating Comparison Tray (appears on hosts or home if 1+ hosts selected) */}
