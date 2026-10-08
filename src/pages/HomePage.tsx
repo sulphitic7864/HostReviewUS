@@ -154,7 +154,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                   {/* Brand Logo Avatar */}
                   <div
-                    className={`w-14 h-14 rounded-xl ${host.logoBg} text-white font-black text-lg flex items-center justify-center shrink-0 shadow-sm`}
+                    className={`w-14 h-14 rounded-xl ${host.logoBg} text-white font-black text-lg hidden md:flex items-center justify-center shrink-0 shadow-sm`}
                   >
                     {host.logoText}
                   </div>
