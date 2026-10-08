@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button type="button" onClick={() => handleNav('hosts')} className="hover:text-white transition-colors">
-                  All 130 Hosts Directory
+                  All 100+ Hosts Directory
                 </button>
               </li>
               <li>

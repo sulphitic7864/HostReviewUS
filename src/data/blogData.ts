@@ -8,7 +8,7 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     id: 'post-1',
     title: 'Top 7 Web Hosting Providers for US Small Businesses in 2026 (Speed & Uptime Benchmarks)',
     slug: 'best-web-hosting-small-business-2026',
-    excerpt: 'We stress-tested 130 hosting providers across 365 days of continuous ping logging. Here are the 7 standout performers that keep small business websites fast, reliable, and secure.',
+    excerpt: 'We stress-tested 100+ hosting providers across 365 days of continuous ping logging. Here are the 7 standout performers that keep small business websites fast, reliable, and secure.',
     category: 'Best-For Lists',
     readTime: '8 min read',
     date: 'October 4, 2026',

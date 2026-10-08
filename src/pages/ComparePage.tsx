@@ -157,7 +157,11 @@ export const ComparePage: React.FC<ComparePageProps> = ({
                   Features & Metrics
                 </th>
                 {comparedHosts.map((host) => (
-                  <th key={host.id} className="p-4 sm:p-6 w-1/3 min-w-[240px] align-top border-l border-slate-200">
+                  <th
+                    key={host.id}
+                    className="p-4 sm:p-6 w-1/3 min-w-[240px] align-top border-l border-slate-200 cursor-pointer"
+                    onClick={() => onOpenHostProfile(host)}
+                  >
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <div
@@ -190,6 +194,7 @@ export const ComparePage: React.FC<ComparePageProps> = ({
                         href={host.affiliateLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
                         className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-colors"
                       >
                         <span>View {host.name} Deal</span>
@@ -198,7 +203,10 @@ export const ComparePage: React.FC<ComparePageProps> = ({
 
                       <button
                         type="button"
-                        onClick={() => onOpenHostProfile(host)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onOpenHostProfile(host);
+                        }}
                         className="w-full text-center text-xs text-slate-600 hover:text-slate-900 underline py-0.5"
                       >
                         Read Full Profile

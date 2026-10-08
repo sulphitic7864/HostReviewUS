@@ -20,14 +20,32 @@ import { HostProvider } from './types/hosting';
 import { ArrowRight, X, SlidersHorizontal } from 'lucide-react';
 
 export default function App() {
-  // Sync page route from URL query or default to 'home'
+  // Sync page route from URL path or legacy query string
   const [currentPage, setCurrentPage] = useState<PageRoute>(() => {
-    const params = new URLSearchParams(window.location.search);
-    const p = params.get('page') as PageRoute;
     const validPages: PageRoute[] = [
       'home', 'hosts', 'compare', 'blog', 'contact',
       'methodology', 'disclosure', 'privacy', 'terms', 'about'
     ];
+
+    const pathMap: Record<string, PageRoute> = {
+      '/hosts': 'hosts',
+      '/compare': 'compare',
+      '/blog': 'blog',
+      '/contact': 'contact',
+      '/methodology': 'methodology',
+      '/disclosure': 'disclosure',
+      '/privacy': 'privacy',
+      '/terms': 'terms',
+      '/about': 'about'
+    };
+
+    const pathPage = pathMap[window.location.pathname.replace(/\/+$/, '')];
+    if (pathPage) {
+      return pathPage;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const p = params.get('page') as PageRoute;
     return validPages.includes(p) ? p : 'home';
   });
 
@@ -47,11 +65,10 @@ export default function App() {
   // Sync route with URL history
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (currentPage === 'home') {
-      url.searchParams.delete('page');
-    } else {
-      url.searchParams.set('page', currentPage);
-    }
+
+    url.pathname = currentPage === 'home' ? '/' : `/${currentPage}`;
+    url.search = '';
+
     window.history.replaceState({}, '', url.toString());
   }, [currentPage]);
 

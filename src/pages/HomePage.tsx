@@ -143,7 +143,16 @@ export const HomePage: React.FC<HomePageProps> = ({
             return (
               <div
                 key={host.id}
-                className="bg-white rounded-2xl border border-slate-200 hover:border-slate-300 shadow-sm transition-all p-5 sm:p-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6"
+                role="button"
+                tabIndex={0}
+                onClick={() => onOpenHostProfile(host)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onOpenHostProfile(host);
+                  }
+                }}
+                className="bg-white rounded-2xl border border-slate-200 hover:border-slate-300 shadow-sm transition-all p-5 sm:p-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 cursor-pointer"
               >
                 {/* Left Column: Rank + Logo + Name + Verdict */}
                 <div className="flex items-start gap-4 flex-1">
@@ -219,6 +228,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       href={host.affiliateLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(event) => event.stopPropagation()}
                       className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors text-center"
                     >
                       <span>View Deal</span>
@@ -228,7 +238,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <div className="flex items-center justify-between gap-2">
                       <button
                         type="button"
-                        onClick={() => onOpenHostProfile(host)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onOpenHostProfile(host);
+                        }}
                         className="text-xs text-slate-600 hover:text-slate-900 font-medium underline underline-offset-2 py-1"
                       >
                         Full Profile
@@ -236,7 +249,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                       <button
                         type="button"
-                        onClick={() => onToggleCompare(host.id)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onToggleCompare(host.id);
+                        }}
                         className={`text-xs px-2 py-0.5 rounded border transition-colors ${
                           isCompared
                             ? 'bg-slate-900 text-white border-slate-900'
