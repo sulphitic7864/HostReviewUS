@@ -147,16 +147,14 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 {/* Left Column: Rank + Logo + Name + Verdict */}
                 <div className="flex items-start gap-4 flex-1">
-                  {/* Rank Badge */}
-                  <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-800 font-mono font-bold text-sm flex items-center justify-center shrink-0 border border-slate-200">
-                    #{index + 1}
-                  </div>
-
-                  {/* Brand Logo Avatar */}
+                  {/* Brand Logo with Rank Badge */}
                   <div
-                    className={`w-14 h-14 rounded-xl ${host.logoBg} text-white font-black text-lg hidden md:flex items-center justify-center shrink-0 shadow-sm`}
+                    className={`relative w-14 h-14 rounded-xl ${host.logoBg} text-white font-black text-lg flex items-center justify-center shrink-0 shadow-sm`}
                   >
                     {host.logoText}
+                    <span className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-slate-900 text-white font-mono font-bold text-xs flex items-center justify-center border-2 border-white shadow-sm">
+                      {index + 1}
+                    </span>
                   </div>
 
                   {/* Content details */}

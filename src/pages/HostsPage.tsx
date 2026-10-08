@@ -273,14 +273,14 @@ export const HostsPage: React.FC<HostsPageProps> = ({
               >
                 {/* Left: Identity & Verdict */}
                 <div className="flex items-start gap-4 flex-1">
-                  <div className="text-xs font-mono font-bold text-slate-400 w-6 pt-1 shrink-0">
-                    #{globalIndex}
-                  </div>
-
+                  {/* Brand Logo with Rank Badge */}
                   <div
-                    className={`w-12 h-12 rounded-xl ${host.logoBg} text-white font-black text-base flex items-center justify-center shrink-0 shadow-xs`}
+                    className={`relative w-10 h-10 md:w-14 md:h-14 rounded-xl ${host.logoBg} text-white font-black text-lg flex items-center justify-center shrink-0 shadow-sm`}
                   >
                     {host.logoText}
+                    <span className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-slate-900 text-white font-mono font-bold text-xs flex items-center justify-center border-2 border-white shadow-sm">
+                      {globalIndex}
+                    </span>
                   </div>
 
                   <div className="min-w-0 flex-1 space-y-1.5">
