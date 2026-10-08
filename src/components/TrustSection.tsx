@@ -5,7 +5,7 @@ const trustFeatures = [
   {
     icon: Server,
     color: 'emerald',
-    title: '130+ Hosts Benchmarked',
+    title: '100+ Hosts Benchmarked',
     text: 'We maintain active live accounts to track server response times, uptime spikes, and renewal pricing daily.'
   },
   {

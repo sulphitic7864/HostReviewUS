@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageRoute } from './Navbar';
+import logoImg from '../assets/images/logo.png';
 
 interface FooterProps {
   onNavigate: (page: PageRoute) => void;
@@ -23,17 +24,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={() => handleNav('home')}
               className="text-lg font-bold text-white tracking-tight flex items-center gap-2 mb-3"
             >
-              <span className="w-7 h-7 rounded bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white text-xs font-black shadow-inner">
-                HR
-              </span>
-              <span>HostReview<span className="text-emerald-400">US</span></span>
+              <img
+                src={logoImg}
+                alt="HostReview US logo"
+                className="w-40 object-contain rounded-lg"
+              />
+              {/* <span>HostReview<span className="text-emerald-400">US</span></span> */}
             </button>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm mb-4">
               Independently rated web hosting for US small business owners, freelancers, and growing agencies. Built to eliminate guesswork and protect your bottom line.
             </p>
             <div className="text-xs text-slate-500 space-y-1">
               <div>US Infrastructure Testing Lab</div>
-              <div>100 S Wacker Dr, Suite 1400, Chicago, IL 60606</div>
+              {/* <div>100 S Wacker Dr, Suite 1400, Chicago, IL 60606</div> */}
             </div>
           </div>
 

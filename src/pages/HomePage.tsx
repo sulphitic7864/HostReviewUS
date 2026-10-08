@@ -65,7 +65,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
-              We monitor 130+ hosting providers around the clock. Compare audited server speed, real renewal pricing, uptime reliability, and customer service without sales spin.
+              We monitor 100+ hosting providers around the clock. Compare audited server speed, real renewal pricing, uptime reliability, and customer service without sales spin.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -74,7 +74,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onClick={() => onNavigate('hosts')}
                 className="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2"
               >
-                <span>Browse All 130 Hosts</span>
+                <span>Browse All 100+ Hosts</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -92,7 +92,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Quick Metrics Proof Strip */}
           <div className="mt-12 pt-8 border-t border-slate-800 grid grid-cols-2 md:grid-cols-4 gap-6 text-slate-300">
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">130+</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">100+</div>
               <div className="text-xs text-slate-400 mt-0.5">Active Providers Tracked</div>
             </div>
             <div>
@@ -131,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             onClick={() => onNavigate('hosts')}
             className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 self-start md:self-auto"
           >
-            <span>View complete 130 host directory</span>
+            <span>View complete 100+ host directory</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>

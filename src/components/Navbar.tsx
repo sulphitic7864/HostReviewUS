@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import logoImg from '../assets/images/logo.png';
 
 export type PageRoute = 'home' | 'hosts' | 'compare' | 'blog' | 'contact' | 'methodology' | 'disclosure' | 'privacy' | 'terms' | 'about';
 
@@ -54,10 +55,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => handleNavClick('home')}
           className="text-xl font-bold tracking-tight text-white hover:text-slate-200 transition-colors text-left flex items-center gap-2"
         >
-          <span className="w-8 h-8 rounded bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white text-xs font-black shadow-inner">
-            HR
-          </span>
-          <span>HostReview<span className="text-emerald-400">US</span></span>
+          <img
+            src={logoImg}
+            alt="HostReview US logo"
+className="w-40 object-contain rounded-lg"          />
+          {/* <span>HostReview<span className="text-emerald-400">US</span></span> */}
         </button>
 
         {/* Zone 2: Nav Links (Clean text links with active indicator) */}

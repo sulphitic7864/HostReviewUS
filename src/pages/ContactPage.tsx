@@ -180,8 +180,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-white">HostReview US Testing Lab</div>
-                  <div>100 S Wacker Dr, Suite 1400</div>
-                  <div>Chicago, IL 60606</div>
+                  {/* <div>Remote editorial review operations</div>
+                  <div>United States</div> */}
                 </div>
               </div>
 

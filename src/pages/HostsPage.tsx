@@ -124,7 +124,7 @@ export const HostsPage: React.FC<HostsPageProps> = ({
           Complete Provider Directory
         </div>
         <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-          All 130 Web Hosting Providers Tested
+          All 100+ Web Hosting Providers Tested
         </h1>
         <p className="text-sm text-slate-600 mt-1 max-w-2xl">
           Search and filter the complete domestic US hosting database. Every provider features audited server benchmarks, transparent renewal pricing, and verified customer support ratings.
@@ -250,7 +250,7 @@ export const HostsPage: React.FC<HostsPageProps> = ({
         <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center space-y-3">
           <div className="text-slate-400 font-medium text-lg">No hosting providers match your filters.</div>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
-            Try resetting your price threshold or search query to view the full 130 host directory.
+            Try resetting your price threshold or search query to view the full 100+ host directory.
           </p>
           <button
             type="button"
