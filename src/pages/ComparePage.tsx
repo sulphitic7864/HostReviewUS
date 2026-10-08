@@ -113,7 +113,7 @@ export const ComparePage: React.FC<ComparePageProps> = ({
         </div>
 
         {/* Picker Dropdowns Grid */}
-        <div className={`grid grid-cols-1 sm:grid-cols-${comparedHosts.length} gap-4`}>
+        <div className={`grid grid-cols-1 gap-4 ${comparedHosts.length > 2 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
           {comparedHosts.map((host, idx) => (
             <div key={idx} className="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
               <div className="flex items-center justify-between text-xs">
@@ -148,7 +148,7 @@ export const ComparePage: React.FC<ComparePageProps> = ({
 
       {/* Comparison Matrix Table */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overscroll-x-contain">
           <table className="w-full text-left text-sm border-collapse">
             {/* Header Cards Row */}
             <thead>

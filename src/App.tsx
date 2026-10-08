@@ -146,7 +146,7 @@ export default function App() {
 
       {/* Floating Comparison Tray (appears on hosts or home if 1+ hosts selected) */}
       {comparedHostIds.length > 0 && currentPage !== 'compare' && (
-        <div className="fixed bottom-4 right-4 z-40 bg-[#0B192C] text-white p-3 sm:p-4 rounded-2xl shadow-xl border border-slate-700 max-w-sm w-full animate-in slide-in-from-bottom-5">
+        <div className="fixed bottom-4 left-4 right-4 z-40 w-auto max-w-sm rounded-2xl border border-slate-700 bg-[#0B192C] p-3 text-white shadow-xl animate-in slide-in-from-bottom-5 sm:left-auto sm:right-4 sm:p-4">
           <div className="flex items-center justify-between gap-3 mb-2.5">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
               <SlidersHorizontal className="w-3.5 h-3.5" />

@@ -283,7 +283,7 @@ export const HostsPage: React.FC<HostsPageProps> = ({
                     {host.logoText}
                   </div>
 
-                  <div className="space-y-1.5 flex-1">
+                  <div className="min-w-0 flex-1 space-y-1.5">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-base font-bold text-slate-900">{host.name}</h3>
                       <span className="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
@@ -296,7 +296,7 @@ export const HostsPage: React.FC<HostsPageProps> = ({
                       )}
                     </div>
 
-                    <div className="flex items-center gap-3 text-xs text-slate-500">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
                       <StarRating rating={host.starRating} size="sm" />
                       <span>·</span>
                       <span>{host.uptimeSla} Uptime</span>

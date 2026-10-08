@@ -154,7 +154,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
 
         {/* Article Header */}
         <header className="space-y-4">
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
             <span className="font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
               {activePost.category}
             </span>
@@ -265,7 +265,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
           <div className="space-y-4">
             {currentComments.map((c) => (
               <div key={c.id} className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
-                <div className="flex items-center justify-between text-xs">
+                <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-xs">
                   <span className="font-bold text-slate-900">{c.name}</span>
                   <span className="text-slate-400">{c.date}</span>
                 </div>

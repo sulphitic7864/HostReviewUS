@@ -70,7 +70,7 @@ export const HostProfileModal: React.FC<HostProfileModalProps> = ({
                     Best for: {host.bestFor.toUpperCase()}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-300">
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-300">
                   <StarRating rating={host.starRating} size="sm" />
                   <span>·</span>
                   <span>Tested: {host.lastUpdated}</span>
@@ -94,7 +94,7 @@ export const HostProfileModal: React.FC<HostProfileModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-8 overflow-y-auto flex-1">
+        <div className="min-h-0 flex-1 space-y-8 overflow-y-auto p-4 sm:p-8">
           {/* Quick Verdict */}
           <div>
             <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
