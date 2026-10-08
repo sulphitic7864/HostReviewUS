@@ -179,7 +179,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-semibold text-white">HostReview US Testing Lab</div>
+                  <div className="font-semibold text-white">Boo Savvy Testing Lab</div>
                   {/* <div>Remote editorial review operations</div>
                   <div>United States</div> */}
                 </div>

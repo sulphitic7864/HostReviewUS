@@ -874,7 +874,7 @@ providerNames.forEach((name, index) => {
     verdict: `Reliable ${bestForPick} hosting solution tested in our US review lab. Delivers competitive speed benchmarks, robust server isolation, and dedicated support for growing small business workloads.`,
     hostingTypes: typePick,
     bestFor: bestForPick,
-    affiliateLink: `https://${name.toLowerCase().replace(/[^a-z0-9]+/g, '')}.com/businessdeal?ref=hostreview`,
+    affiliateLink: `https://${name.toLowerCase().replace(/[^a-z0-9]+/g, '')}.com/businessdeal?ref=boosavvy`,
     lastUpdated: 'October 2026',
     pros: [
       `Solid ${bestForPick} server configuration`,

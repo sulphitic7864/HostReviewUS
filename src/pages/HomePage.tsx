@@ -266,7 +266,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 How We Rate Hosting Providers
               </h2>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
-                Most affiliate sites assign 5 stars to the host paying the highest commission. At HostReview US, every provider is evaluated against our strict 5-pillar scoring model powered by independent server diagnostic hardware.
+                Most affiliate sites assign 5 stars to the host paying the highest commission. At Boo Savvy, every provider is evaluated against our strict 5-pillar scoring model powered by independent server diagnostic hardware.
               </p>
 
               <div className="grid grid-cols-2 gap-4 mb-8 text-xs">

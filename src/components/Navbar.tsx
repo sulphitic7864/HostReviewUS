@@ -57,9 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <img
             src={logoImg}
-            alt="HostReview US logo"
+            alt="Boo Savvy logo"
 className="w-40 object-contain rounded-lg"          />
-          {/* <span>HostReview<span className="text-emerald-400">US</span></span> */}
+          {/* <span>Boo Savvy<span className="text-emerald-400">US</span></span> */}
         </button>
 
         {/* Zone 2: Nav Links (Clean text links with active indicator) */}

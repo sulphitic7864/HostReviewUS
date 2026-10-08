@@ -26,10 +26,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             >
               <img
                 src={logoImg}
-                alt="HostReview US logo"
+                alt="Boo Savvy US logo"
                 className="w-40 object-contain rounded-lg"
               />
-              {/* <span>HostReview<span className="text-emerald-400">US</span></span> */}
+              {/* <span>Boo Savvy<span className="text-emerald-400">US</span></span> */}
             </button>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm mb-4">
               Independently rated web hosting for US small business owners, freelancers, and growing agencies. Built to eliminate guesswork and protect your bottom line.
@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Affiliate Disclosure Notice Box */}
         <div className="mt-10 pt-5 text-center border-t border-slate-800 text-xs text-slate-500 leading-relaxed">
-              © 2026 HostReview US. All rights reserved. Registered trademark of Infrastructure Media Lab LLC.
+              © 2026 Boo Savvy. All rights reserved. Registered trademark of Infrastructure Media Lab LLC.
         </div>
       </div>
     </footer>

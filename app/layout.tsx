@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'HostReview US - Best Web Hosting for Small Business',
+  title: 'Boo Savvy US - Best Web Hosting for Small Business',
   description: 'Independently rated web hosting for small business in the US market. Compare audited uptime, server response times, renewal pricing, and live customer support across 130+ providers.',
   openGraph: {
-    title: 'HostReview US - Best Web Hosting for Small Business',
+    title: 'Boo Savvy US - Best Web Hosting for Small Business',
     description: 'Independently rated web hosting for small business in the US market.',
     type: 'website',
   },

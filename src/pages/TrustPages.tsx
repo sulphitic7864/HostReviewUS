@@ -57,7 +57,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
 
           <div className="prose prose-slate max-w-none text-slate-700 space-y-6 text-sm sm:text-base leading-relaxed">
             <p>
-              At <strong>HostReview US</strong>, our review scores are derived strictly from quantitative server monitoring, automated synthetic transactions, and mystery-shopper support tests. We do not accept free accounts from hosting vendors—all plans are purchased with our own testing budget under anonymous business entities.
+              At <strong>Boo Savvy</strong>, our review scores are derived strictly from quantitative server monitoring, automated synthetic transactions, and mystery-shopper support tests. We do not accept free accounts from hosting vendors—all plans are purchased with our own testing budget under anonymous business entities.
             </p>
 
             <h2 className="text-xl font-bold text-slate-900 pt-4">Pillar 1: Uptime Reliability & Speed (30% of Overall Score)</h2>
@@ -115,7 +115,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
 
           <div className="prose prose-slate max-w-none text-slate-700 space-y-6 text-sm sm:text-base leading-relaxed">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-emerald-950 font-medium text-sm">
-              Summary: HostReview US is reader-supported. When you purchase web hosting plans through the affiliate links on our website, we may receive compensation at zero additional cost to you.
+              Summary: Boo Savvy is reader-supported. When you purchase web hosting plans through the affiliate links on our website, we may receive compensation at zero additional cost to you.
             </div>
 
             <h2 className="text-xl font-bold text-slate-900 pt-2">How We Earn Revenue</h2>
@@ -135,7 +135,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
 
             <h2 className="text-xl font-bold text-slate-900 pt-2">Questions or Inquiries</h2>
             <p>
-              If you have questions regarding our commercial arrangements or would like further information about our business operations, contact our compliance officer at <code>compliance@hostreviewus.com</code>.
+              If you have questions regarding our commercial arrangements or would like further information about our business operations, contact our compliance officer at <code>contact@boosavvy.com</code>.
             </p>
           </div>
         </article>
@@ -149,7 +149,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
               Our Mission & Testing Lab
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              About HostReview US
+              About Boo Savvy
             </h1>
             <p className="text-sm text-slate-600">
               Dedicated to helping American small business owners choose honest, reliable infrastructure.
@@ -158,7 +158,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
 
           <div className="prose prose-slate max-w-none text-slate-700 space-y-6 text-sm sm:text-base leading-relaxed">
             <p>
-              HostReview US was established in Chicago with a clear objective: cut through deceptive affiliate marketing and provide small businesses with clear, audited technical facts about web hosting providers.
+              Boo Savvy was established in Chicago with a clear objective: cut through deceptive affiliate marketing and provide small businesses with clear, audited technical facts about web hosting providers.
             </p>
 
             <h2 className="text-xl font-bold text-slate-900 pt-2">Our Testing Team</h2>
@@ -211,13 +211,13 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
               Privacy Policy
             </h1>
             <p className="text-sm text-slate-600">
-              Effective Date: October 1, 2026 · HostReview US
+              Effective Date: October 1, 2026 · Boo Savvy
             </p>
           </header>
 
           <div className="prose prose-slate max-w-none text-slate-700 space-y-4 text-sm leading-relaxed">
             <p>
-              HostReview US respects the privacy of our visitors. This Privacy Policy details the information we collect and how we safeguard your information when you visit our website.
+              Boo Savvy respects the privacy of our visitors. This Privacy Policy details the information we collect and how we safeguard your information when you visit our website.
             </p>
             <h3 className="font-bold text-slate-900 text-base">1. Information We Collect</h3>
             <p>
@@ -246,13 +246,13 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
               Terms of Use
             </h1>
             <p className="text-sm text-slate-600">
-              Effective Date: October 1, 2026 · HostReview US
+              Effective Date: October 1, 2026 · Boo Savvy
             </p>
           </header>
 
           <div className="prose prose-slate max-w-none text-slate-700 space-y-4 text-sm leading-relaxed">
             <p>
-              By accessing HostReview US, you agree to be bound by these Terms of Use and all applicable laws and regulations.
+              By accessing Boo Savvy, you agree to be bound by these Terms of Use and all applicable laws and regulations.
             </p>
             <h3 className="font-bold text-slate-900 text-base">1. Informational Purposes Only</h3>
             <p>
@@ -260,7 +260,7 @@ export const TrustPages: React.FC<TrustPageProps> = ({ type, onNavigate }) => {
             </p>
             <h3 className="font-bold text-slate-900 text-base">2. Intellectual Property</h3>
             <p>
-              All original content, benchmark graphs, articles, and review ratings are the intellectual property of HostReview US and may not be reproduced without explicit written consent.
+              All original content, benchmark graphs, articles, and review ratings are the intellectual property of Boo Savvy and may not be reproduced without explicit written consent.
             </p>
           </div>
         </article>

@@ -42,7 +42,7 @@ export const TrustSection: React.FC = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
       <div className="mx-auto mb-8 max-w-2xl text-center">
         <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
-          Why HostReviewUS
+          Why Boo Savvy
         </span>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
           Built for clarity, not hype.
