@@ -189,7 +189,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 <Mail className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-white">Direct Editorial Email</div>
-                  <div>editorial@hostreviewus.com</div>
+                  <div>contact@boosavvy.com</div>
                 </div>
               </div>
 
