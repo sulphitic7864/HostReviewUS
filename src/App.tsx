@@ -78,6 +78,11 @@ export default function App() {
   }, [comparedHostIds]);
 
   const handleNavigate = (page: PageRoute) => {
+    if (page === 'blog') {
+      window.location.assign('/blog');
+      return;
+    }
+
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
