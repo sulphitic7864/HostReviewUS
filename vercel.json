@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/blog",
-      "destination": "http://50.62.144.72/blog"
+      "destination": "http://50.62.144.72"
     },
     {
       "source": "/blog/:path*",
-      "destination": "http://50.62.144.72/blog/:path*"
+      "destination": "http://50.62.144.72/:path*"
     },
     {
       "source": "/(.*)",
