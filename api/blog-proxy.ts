@@ -56,7 +56,8 @@ function relayHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
 export default function handler(req: IncomingMessage, res: ServerResponse): void {
   const requestUrl = new URL(req.url || '/', 'http://vercel.local');
   const requestedPath = requestUrl.searchParams.get('path');
-  const upstreamPath = requestedPath ? `/${requestedPath.replace(/^\/+/, '')}` : '/';
+  const blogPath = requestedPath?.replace(/^\/+/, '');
+  const upstreamPath = blogPath ? `/blog/${blogPath}` : '/blog';
   const upstreamQuery = new URLSearchParams(requestUrl.searchParams);
   upstreamQuery.delete('path');
   const queryString = upstreamQuery.toString();
