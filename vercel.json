@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/blog",
-      "destination": "http://50.62.144.72"
+      "destination": "/api/blog-proxy"
     },
     {
       "source": "/blog/:path*",
-      "destination": "http://50.62.144.72/:path*"
+      "destination": "/api/blog-proxy?path=:path*"
     },
     {
       "source": "/(.*)",
