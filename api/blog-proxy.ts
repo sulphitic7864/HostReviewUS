@@ -124,9 +124,13 @@ export default function handler(req: IncomingMessage, res: ServerResponse): void
   const requestUrl = new URL(req.url || '/', 'http://vercel.local');
   const requestedPath = requestUrl.searchParams.get('path');
   const blogPath = requestedPath?.replace(/^\/+|\/+$/g, '');
-  const upstreamPath = blogPath ? `/${blogPath}` : '/';
+  const hasTrailingSlash = requestUrl.searchParams.get('trailingSlash') === '1';
+  const upstreamPath = blogPath
+    ? `/${blogPath}${hasTrailingSlash ? '/' : ''}`
+    : '/';
   const upstreamQuery = new URLSearchParams(requestUrl.searchParams);
   upstreamQuery.delete('path');
+  upstreamQuery.delete('trailingSlash');
   const queryString = upstreamQuery.toString();
 
   const upstreamRequest = http.request(
