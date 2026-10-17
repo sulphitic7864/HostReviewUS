@@ -7,6 +7,8 @@ import http, {
 
 const UPSTREAM_IP = '50.62.144.72';
 const UPSTREAM_HOST = 'boosavvy.com';
+const PUBLIC_BLOG_PREFIX = '/blog';
+const PUBLIC_BLOG_ORIGIN = 'https://www.boosavvy.com';
 const HOP_BY_HOP_HEADERS = new Set([
   'connection',
   'keep-alive',
@@ -37,6 +39,7 @@ function forwardHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
   forwarded.host = UPSTREAM_HOST;
   forwarded['x-forwarded-host'] = UPSTREAM_HOST;
   forwarded['x-forwarded-proto'] = 'https';
+  forwarded['x-forwarded-prefix'] = PUBLIC_BLOG_PREFIX;
 
   return forwarded;
 }
@@ -46,18 +49,55 @@ function relayHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
 
   for (const [name, value] of Object.entries(headers)) {
     if (value !== undefined && !HOP_BY_HOP_HEADERS.has(name.toLowerCase())) {
-      relayed[name] = value;
+      if (name.toLowerCase() === 'location') {
+        relayed[name] = rewriteLocation(value);
+      } else if (name.toLowerCase() === 'set-cookie') {
+        relayed[name] = Array.isArray(value)
+          ? value.map(rewriteCookiePath)
+          : rewriteCookiePath(value);
+      } else {
+        relayed[name] = value;
+      }
     }
   }
 
   return relayed;
 }
 
+function rewriteLocation(value: string | string[]): string | string[] {
+  const rewrite = (location: string): string => {
+    try {
+      const url = new URL(location, PUBLIC_BLOG_ORIGIN);
+      if (url.hostname !== UPSTREAM_HOST && url.hostname !== `www.${UPSTREAM_HOST}`) {
+        return location;
+      }
+
+      url.protocol = 'https:';
+      url.hostname = 'www.boosavvy.com';
+      if (
+        url.pathname !== PUBLIC_BLOG_PREFIX &&
+        !url.pathname.startsWith(`${PUBLIC_BLOG_PREFIX}/`)
+      ) {
+        url.pathname = `${PUBLIC_BLOG_PREFIX}${url.pathname}`;
+      }
+      return url.toString();
+    } catch {
+      return location;
+    }
+  };
+
+  return Array.isArray(value) ? value.map(rewrite) : rewrite(value);
+}
+
+function rewriteCookiePath(cookie: string): string {
+  return cookie.replace(/;\s*path=\/(?=;|$)/i, `; Path=${PUBLIC_BLOG_PREFIX}/`);
+}
+
 export default function handler(req: IncomingMessage, res: ServerResponse): void {
   const requestUrl = new URL(req.url || '/', 'http://vercel.local');
   const requestedPath = requestUrl.searchParams.get('path');
-  const blogPath = requestedPath?.replace(/^\/+/, '');
-  const upstreamPath = blogPath ? `/blog/${blogPath}` : '/blog';
+  const blogPath = requestedPath?.replace(/^\/+|\/+$/g, '');
+  const upstreamPath = blogPath ? `/${blogPath}` : '/';
   const upstreamQuery = new URLSearchParams(requestUrl.searchParams);
   upstreamQuery.delete('path');
   const queryString = upstreamQuery.toString();
