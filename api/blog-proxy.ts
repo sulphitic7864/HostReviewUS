@@ -40,18 +40,27 @@ function forwardHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
   forwarded['x-forwarded-host'] = UPSTREAM_HOST;
   forwarded['x-forwarded-proto'] = 'https';
   forwarded['x-forwarded-prefix'] = PUBLIC_BLOG_PREFIX;
+  forwarded['accept-encoding'] = 'identity';
 
   return forwarded;
 }
 
-function relayHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
+function relayHeaders(
+  headers: IncomingHttpHeaders,
+  rewriteHtml = false
+): OutgoingHttpHeaders {
   const relayed: OutgoingHttpHeaders = {};
 
   for (const [name, value] of Object.entries(headers)) {
-    if (value !== undefined && !HOP_BY_HOP_HEADERS.has(name.toLowerCase())) {
-      if (name.toLowerCase() === 'location') {
+    const lowerCaseName = name.toLowerCase();
+    if (
+      value !== undefined &&
+      !HOP_BY_HOP_HEADERS.has(lowerCaseName) &&
+      !(rewriteHtml && ['content-length', 'content-encoding', 'etag', 'content-md5'].includes(lowerCaseName))
+    ) {
+      if (lowerCaseName === 'location') {
         relayed[name] = rewriteLocation(value);
-      } else if (name.toLowerCase() === 'set-cookie') {
+      } else if (lowerCaseName === 'set-cookie') {
         relayed[name] = Array.isArray(value)
           ? value.map(rewriteCookiePath)
           : rewriteCookiePath(value);
@@ -62,6 +71,24 @@ function relayHeaders(headers: IncomingHttpHeaders): OutgoingHttpHeaders {
   }
 
   return relayed;
+}
+
+function rewriteHtmlUrls(html: string): string {
+  return html
+    .replace(
+      /https?:\/\/(?:www\.)?boosavvy\.com(\/[^"'\s<>]*)?/gi,
+      (_match, path: string | undefined) => {
+        const suffix = path || '/';
+        const blogPath = suffix === PUBLIC_BLOG_PREFIX || suffix.startsWith(`${PUBLIC_BLOG_PREFIX}/`)
+          ? suffix
+          : `${PUBLIC_BLOG_PREFIX}${suffix}`;
+        return `${PUBLIC_BLOG_ORIGIN}${blogPath}`;
+      }
+    )
+    .replace(
+      /((?:href|src|action|data-src)=["'])\/(?!blog(?:\/|["']))([^"']*)/gi,
+      `$1${PUBLIC_BLOG_PREFIX}/$2`
+    );
 }
 
 function rewriteLocation(value: string | string[]): string | string[] {
@@ -111,6 +138,35 @@ export default function handler(req: IncomingMessage, res: ServerResponse): void
       headers: forwardHeaders(req.headers)
     },
     (upstreamResponse) => {
+      const contentType = upstreamResponse.headers['content-type'] || '';
+      if (contentType.includes('text/html')) {
+        const chunks: Buffer[] = [];
+        upstreamResponse.on('data', (chunk: Buffer | string) => {
+          chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+        });
+        upstreamResponse.on('end', () => {
+          const body = Buffer.from(rewriteHtmlUrls(Buffer.concat(chunks).toString('utf8')));
+          res.writeHead(
+            upstreamResponse.statusCode || 502,
+            {
+              ...relayHeaders(upstreamResponse.headers, true),
+              'content-length': body.length
+            }
+          );
+          res.end(body);
+        });
+        upstreamResponse.on('error', (error) => {
+          console.error('WordPress response stream failed:', error);
+          if (!res.headersSent) {
+            res.writeHead(502, { 'content-type': 'text/plain; charset=utf-8' });
+            res.end('The WordPress response could not be read.');
+          } else {
+            res.destroy(error);
+          }
+        });
+        return;
+      }
+
       res.writeHead(
         upstreamResponse.statusCode || 502,
         relayHeaders(upstreamResponse.headers)
