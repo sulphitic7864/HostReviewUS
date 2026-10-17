@@ -101,12 +101,14 @@ function rewriteLocation(value: string | string[]): string | string[] {
 
       url.protocol = 'https:';
       url.hostname = 'www.boosavvy.com';
-      if (
-        url.pathname !== PUBLIC_BLOG_PREFIX &&
-        !url.pathname.startsWith(`${PUBLIC_BLOG_PREFIX}/`)
-      ) {
-        url.pathname = `${PUBLIC_BLOG_PREFIX}${url.pathname}`;
+      url.pathname = blogPublicPath(url.pathname);
+
+      for (const [key, target] of url.searchParams) {
+        if (key === 'redirect_to') {
+          url.searchParams.set(key, rewriteRedirectTarget(target));
+        }
       }
+
       return url.toString();
     } catch {
       return location;
@@ -114,6 +116,33 @@ function rewriteLocation(value: string | string[]): string | string[] {
   };
 
   return Array.isArray(value) ? value.map(rewrite) : rewrite(value);
+}
+
+function blogPublicPath(pathname: string): string {
+  if (
+    pathname === PUBLIC_BLOG_PREFIX ||
+    pathname.startsWith(`${PUBLIC_BLOG_PREFIX}/`)
+  ) {
+    return pathname;
+  }
+
+  return `${PUBLIC_BLOG_PREFIX}${pathname.startsWith('/') ? pathname : `/${pathname}`}`;
+}
+
+function rewriteRedirectTarget(target: string): string {
+  try {
+    const url = new URL(target, PUBLIC_BLOG_ORIGIN);
+    if (url.hostname !== UPSTREAM_HOST && url.hostname !== `www.${UPSTREAM_HOST}`) {
+      return target;
+    }
+
+    url.protocol = 'https:';
+    url.hostname = 'www.boosavvy.com';
+    url.pathname = blogPublicPath(url.pathname);
+    return url.toString();
+  } catch {
+    return target;
+  }
 }
 
 function rewriteCookiePath(cookie: string): string {
