@@ -74,7 +74,7 @@ function relayHeaders(
 }
 
 function rewriteHtmlUrls(html: string): string {
-  return html
+  const rewrittenHtml = html
     .replace(
       /https?:\/\/(?:www\.)?boosavvy\.com(\/[^"'\s<>]*)?/gi,
       (_match, path: string | undefined) => {
@@ -89,6 +89,22 @@ function rewriteHtmlUrls(html: string): string {
       /((?:href|src|action|data-src)=["'])\/(?!blog(?:\/|["']))([^"']*)/gi,
       `$1${PUBLIC_BLOG_PREFIX}/$2`
     );
+
+  if (!/<form\b[^>]*\bid=["']loginform["']/i.test(rewrittenHtml)) {
+    return rewrittenHtml;
+  }
+
+  return rewrittenHtml.replace(/<input\b[^>]*>/gi, (input) => {
+    if (!/\bname=["']redirect_to["']/i.test(input)) {
+      return input;
+    }
+
+    return input.replace(
+      /\bvalue=(["'])[^"']*\1/i,
+      (_match, quote: string) =>
+        `value=${quote}${PUBLIC_BLOG_ORIGIN}${PUBLIC_BLOG_PREFIX}/${quote}`
+    );
+  });
 }
 
 function rewriteLocation(value: string | string[]): string | string[] {
